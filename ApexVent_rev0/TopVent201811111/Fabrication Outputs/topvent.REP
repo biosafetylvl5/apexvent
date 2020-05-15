@@ -1,0 +1,118 @@
+*************************************************************
+FileName = topvent.GBR
+AutoAperture = True
+*************************************************************
+Generating : Bottom Overlay
+      File : topvent.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : topvent.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Component Side
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : topvent.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Solder Side
+      File : topvent.GBS
+
+    Adding Layer      : Solder Side
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D12
+    D13
+    D15
+    D21
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : topvent.GBL
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D17
+    D18
+    D20
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : topvent.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+    D22
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : topvent.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Component Side
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D12
+    D13
+    D14
+    D15
+*************************************************************
+
+*************************************************************
+Generating : Component Side
+      File : topvent.GTL
+
+    Adding Layer      : Component Side
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D16
+    D17
+    D18
+    D19
+    D20
+*************************************************************
+

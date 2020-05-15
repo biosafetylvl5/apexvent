@@ -1,0 +1,430 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD18\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">9/16/2018</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">3:01:37 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc" class="file"><acronym title="C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc">C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">5</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">25</td></tr>
+</table>
+</td>
+</table><a name="IDWTZTZL3OFFQHBWQRRLUVTCEZ3MW0LG5X3YCRVFPTHYWFVVUNGI0C"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJBJ1GG0EVC2BL2APRCJWQW0H0JNPOPLFW0AB5NEXPOGXDWRUBDIH">Unplated multi-layer pad(s) detected</a></td>
+<td class="column2">5</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">5</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWPY5IKVWXH25PQ4HE1TLF2GYBNVYQAW4PF1NZDORDKK00XJVERGF">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBT0FR2PCCXGLDLFG0Y0VHNPKPMYORHDYLN2CZCG5UBQSKCDYVPMJ">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPZWDA3SPPDN4EFJORWFXY1APMM4RXGQDEWS1AGOBD22QUQD3NYK">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">9</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1FHI0XE4YH2ALO52ZXTWXVFHSEIJ4LV5MANND5IH0QV34M1K4KBF">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEGKWUMPLI21YNDYBUJ1JM5ZZJROEP3CQYWCZ0OG2LPGPBSJPLSK">Width Constraint (Min=10mil) (Max=10mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDT5B3KJRYURXZDKTLS2052YEQKMON534GGYPACRD3QRG03VZQG5CM">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDG4G2SJDCKDRWH4BIQI45XOCDSCZ23TQNK1EHRHHCY5LLYYB2NGGJ">Hole Size Constraint (Min=10mil) (Max=247mil) (All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1O05HWXDXYLKGTLC1QGH43CYQG02E1YR2G1Z5YCD40YLTF3T1KEO">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXFS4VX14QV3HGFI3GGA0LD4V5KTJWB5VHIPADDJHSPPHDH20FKMB">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDP10FQQ0MFA4EORG1VSY2DMIFMJWBNFC5MRDWRHJ4DHULEZ1QB5ZL">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDXFGVE10YS03LJZTHGGBEPMALDD3FN1BVLD130GOWA2NFCDSIHGK">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMFK5GGVUPHPPDN2TQFBEGMQQAGZSYCQ20LD0PMKO1R3IIJF5WDSB">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDURVLCCMH3LDELFXDEADOO14YVCAT2IMNCQYJ2HHI31EAQMR450MF">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">25</td>
+</tr>
+</table><br><a name="IDN2S45I3JVXKFKQZOGGLEO3112HOD2LMVQLYFRCC1KF2BBRNOTKDC"><h2>Warnings</h2></a><a name="IDJBJ1GG0EVC2BL2APRCJWQW0H0JNPOPLFW0AB5NEXPOGXDWRUBDIH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Unplated multi-layer pad(s) detected</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896mil|Location2.X=5104mil|Location1.Y=4896mil|Location2.Y=5104mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4896mil|Location2.X=5104mil|Location1.Y=4896mil|Location2.Y=5104mil|Absolute=True">Pad Sc-1(5000mil,5000mil) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=5769mil|Location1.Y=3283.5mil|Location2.Y=6716.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=5769mil|Location1.Y=3283.5mil|Location2.Y=6716.5mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6518mil|Location2.X=6716mil|Location1.Y=4230.5mil|Location2.Y=4429.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6518mil|Location2.X=6716mil|Location1.Y=4230.5mil|Location2.Y=4429.5mil|Absolute=True">Pad S8-1(6617mil,4330mil) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=6716mil|Location1.Y=3040mil|Location2.Y=5769.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=6716mil|Location1.Y=3040mil|Location2.Y=5769.5mil|Absolute=True">Net VBAT</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=4429mil|Location1.Y=3283.5mil|Location2.Y=3482.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=4429mil|Location1.Y=3283.5mil|Location2.Y=3482.5mil|Absolute=True">Pad S6-1(4330mil,3383mil) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=5769mil|Location1.Y=3283.5mil|Location2.Y=6716.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=5769mil|Location1.Y=3283.5mil|Location2.Y=6716.5mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=3482mil|Location1.Y=5570.5mil|Location2.Y=5769.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=3482mil|Location1.Y=5570.5mil|Location2.Y=5769.5mil|Absolute=True">Pad S4-1(3383mil,5670mil) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=6716mil|Location1.Y=3040mil|Location2.Y=5769.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=6716mil|Location1.Y=3040mil|Location2.Y=5769.5mil|Absolute=True">Net VBAT</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5571mil|Location2.X=5769mil|Location1.Y=6517.5mil|Location2.Y=6716.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5571mil|Location2.X=5769mil|Location1.Y=6517.5mil|Location2.Y=6716.5mil|Absolute=True">Pad S2-1(5670mil,6617mil) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=5769mil|Location1.Y=3283.5mil|Location2.Y=6716.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=5769mil|Location1.Y=3283.5mil|Location2.Y=6716.5mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDPZWDA3SPPDN4EFJORWFXY1APMM4RXGQDEWS1AGOBD22QUQD3NYK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5571mil|Location2.X=5769mil|Location1.Y=6517.5mil|Location2.Y=6716.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5571mil|Location2.X=5769mil|Location1.Y=6517.5mil|Location2.Y=6716.5mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad S2-1(5670mil,6617mil) on Multi-Layer [Unplated] And Pad S2-1(5670mil,6617mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5571mil|Location2.X=5769mil|Location1.Y=6517.5mil|Location2.Y=6716.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5571mil|Location2.X=5769mil|Location1.Y=6517.5mil|Location2.Y=6716.5mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad S2-1(5670mil,6617mil) on Multi-Layer [Unplated] And Pad S2-1(5670mil,6617mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=3482mil|Location1.Y=5570.5mil|Location2.Y=5769.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=3482mil|Location1.Y=5570.5mil|Location2.Y=5769.5mil|Absolute=True">Un-Routed Net Constraint: Net VBAT Between Pad S4-1(3383mil,5670mil) on Multi-Layer [Unplated] And Pad S4-1(3383mil,5670mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=3482mil|Location1.Y=5570.5mil|Location2.Y=5769.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284mil|Location2.X=3482mil|Location1.Y=5570.5mil|Location2.Y=5769.5mil|Absolute=True">Un-Routed Net Constraint: Net VBAT Between Pad S4-1(3383mil,5670mil) on Multi-Layer [Unplated] And Pad S4-1(3383mil,5670mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=4429mil|Location1.Y=3283.5mil|Location2.Y=3482.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=4429mil|Location1.Y=3283.5mil|Location2.Y=3482.5mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad S6-1(4330mil,3383mil) on Multi-Layer [Unplated] And Pad S6-1(4330mil,3383mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=4429mil|Location1.Y=3283.5mil|Location2.Y=3482.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=4429mil|Location1.Y=3283.5mil|Location2.Y=3482.5mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad S6-1(4330mil,3383mil) on Multi-Layer [Unplated] And Pad S6-1(4330mil,3383mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=5104mil|Location1.Y=3283.5mil|Location2.Y=5104mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4231mil|Location2.X=5104mil|Location1.Y=3283.5mil|Location2.Y=5104mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad S6-1(4330mil,3383mil) on Multi-Layer [Unplated] And Pad Sc-1(5000mil,5000mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6518mil|Location2.X=6716mil|Location1.Y=4230.5mil|Location2.Y=4429.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6518mil|Location2.X=6716mil|Location1.Y=4230.5mil|Location2.Y=4429.5mil|Absolute=True">Un-Routed Net Constraint: Net VBAT Between Pad S8-1(6617mil,4330mil) on Multi-Layer [Unplated] And Pad S8-1(6617mil,4330mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6518mil|Location2.X=6716mil|Location1.Y=4230.5mil|Location2.Y=4429.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6518mil|Location2.X=6716mil|Location1.Y=4230.5mil|Location2.Y=4429.5mil|Absolute=True">Un-Routed Net Constraint: Net VBAT Between Pad S8-1(6617mil,4330mil) on Multi-Layer [Unplated] And Pad S8-1(6617mil,4330mil) on Multi-Layer [Unplated] </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDG4G2SJDCKDRWH4BIQI45XOCDSCZ23TQNK1EHRHHCY5LLYYB2NGGJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=10mil) (Max=247mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3892.748mil|Location2.X=4143.998mil|Location1.Y=5065.184mil|Location2.Y=5316.434mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3892.748mil|Location2.X=4143.998mil|Location1.Y=5065.184mil|Location2.Y=5316.434mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(4018.373mil,5190.809mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3894.45mil|Location2.X=4145.7mil|Location1.Y=4675.007mil|Location2.Y=4926.257mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3894.45mil|Location2.X=4145.7mil|Location1.Y=4675.007mil|Location2.Y=4926.257mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(4020.075mil,4800.632mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4040.489mil|Location2.X=4291.739mil|Location1.Y=5426.312mil|Location2.Y=5677.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4040.489mil|Location2.X=4291.739mil|Location1.Y=5426.312mil|Location2.Y=5677.562mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(4166.114mil,5551.937mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4045.337mil|Location2.X=4296.587mil|Location1.Y=4315.182mil|Location2.Y=4566.432mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4045.337mil|Location2.X=4296.587mil|Location1.Y=4315.182mil|Location2.Y=4566.432mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(4170.962mil,4440.807mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4315.182mil|Location2.X=4566.432mil|Location1.Y=5703.413mil|Location2.Y=5954.663mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4315.182mil|Location2.X=4566.432mil|Location1.Y=5703.413mil|Location2.Y=5954.663mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(4440.807mil,5829.038mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4322.438mil|Location2.X=4573.688mil|Location1.Y=4040.489mil|Location2.Y=4291.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4322.438mil|Location2.X=4573.688mil|Location1.Y=4040.489mil|Location2.Y=4291.739mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(4448.063mil,4166.114mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4675.007mil|Location2.X=4926.257mil|Location1.Y=5854.3mil|Location2.Y=6105.55mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4675.007mil|Location2.X=4926.257mil|Location1.Y=5854.3mil|Location2.Y=6105.55mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(4800.632mil,5979.925mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4683.566mil|Location2.X=4934.816mil|Location1.Y=3892.748mil|Location2.Y=4143.998mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4683.566mil|Location2.X=4934.816mil|Location1.Y=3892.748mil|Location2.Y=4143.998mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(4809.191mil,4018.373mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5065.184mil|Location2.X=5316.434mil|Location1.Y=5856.002mil|Location2.Y=6107.252mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5065.184mil|Location2.X=5316.434mil|Location1.Y=5856.002mil|Location2.Y=6107.252mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(5190.809mil,5981.627mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5073.743mil|Location2.X=5324.993mil|Location1.Y=3894.45mil|Location2.Y=4145.7mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5073.743mil|Location2.X=5324.993mil|Location1.Y=3894.45mil|Location2.Y=4145.7mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(5199.368mil,4020.075mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5426.312mil|Location2.X=5677.562mil|Location1.Y=5708.261mil|Location2.Y=5959.511mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5426.312mil|Location2.X=5677.562mil|Location1.Y=5708.261mil|Location2.Y=5959.511mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(5551.937mil,5833.886mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5433.568mil|Location2.X=5684.818mil|Location1.Y=4045.337mil|Location2.Y=4296.587mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5433.568mil|Location2.X=5684.818mil|Location1.Y=4045.337mil|Location2.Y=4296.587mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(5559.193mil,4170.962mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5703.413mil|Location2.X=5954.663mil|Location1.Y=5433.568mil|Location2.Y=5684.818mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5703.413mil|Location2.X=5954.663mil|Location1.Y=5433.568mil|Location2.Y=5684.818mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(5829.038mil,5559.193mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5708.261mil|Location2.X=5959.511mil|Location1.Y=4322.438mil|Location2.Y=4573.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5708.261mil|Location2.X=5959.511mil|Location1.Y=4322.438mil|Location2.Y=4573.688mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(5833.886mil,4448.063mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5854.3mil|Location2.X=6105.55mil|Location1.Y=5073.743mil|Location2.Y=5324.993mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5854.3mil|Location2.X=6105.55mil|Location1.Y=5073.743mil|Location2.Y=5324.993mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(5979.925mil,5199.368mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5856.002mil|Location2.X=6107.252mil|Location1.Y=4683.566mil|Location2.Y=4934.816mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Joan Creus Costa\Desktop\ssi\electrical\ApexVent_rev0\topvent.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5856.002mil|Location2.X=6107.252mil|Location1.Y=4683.566mil|Location2.Y=4934.816mil|Absolute=True">Hole Size Constraint: (250mil &gt; 247mil) Pad Free-3(5981.627mil,4809.191mil) on Multi-Layer Actual Hole Size = 250mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

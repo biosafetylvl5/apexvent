@@ -1,0 +1,30 @@
+Bill of Material for 
+On 2/4/2019 at 2:40:46 PM
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+ __template_resistor R0603            1    R1                           RES SMD 10K OHM 1% 1/10W 0603 
+                     BSL-5-SLK-SML    1    U$2                                               
+ 4-40 Machine screw  SCREW_4-40       9    S1, S2, S3, S4, S5, S6, S7   4-40 Machine screw   
+                                           S8, ScT1
+ 450V                SPARK_GAP_450V   10    G1A, G1B, G1C, G1D, G1E, G1F                      
+                                           G1G, G1H, G1I, G1J
+ CAP_CER_10NF_1500V  C1206           20    C1A, C1B, C1C, C1D, C1E, C1F                      
+                                           C1G, C1H, C1I, C1J, C2A, C2B
+                                           C2C, C2D, C2E, C2F, C2G, C2H
+                                           C2I, C2J
+ CAP_TANT_330UF_6.3V C1210P           2    C3, C4                       330UF 1210 SMD TANTALUM CAPACITOR 
+ CONN HEADER 2POS VERT T/H CONN_1x2_100MIL    1    J1                           CONN HEADER 2POS VERT T/H 
+ DIODE_ S1PM-M3/84A  DO-220AA        20    D1A, D1B, D1C, D1D, D1E, D1F                      
+                                           D1G, D1H, D1I, D1J, D2A, D2B
+                                           D2C, D2D, D2E, D2F, D2G, D2H
+                                           D2I, D2J
+ IND_ATB3225         ATB3225          1    I1                                                
+ MOSFET N-CH 60V 1.7A SSOT3 3SOT23           1    Q1                           MOSFET N-CH 60V 1.7A SSOT3 
+ RES_0.0_OHM_1/8W_JUMP_0805_SMD R0805           20    R4A, R4B, R4C, R4D, R4E, R4F RES 0.0 OHM 1/8W JUMP 0805 SMD 
+                                           R4G, R4H, R4I, R4J, R5A, R5B
+                                           R5C, R5D, R5E, R5F, R5G, R5H
+                                           R5I, R5J
+ TEST_POINT_BLACK_KEYSTONE_5001 TEST_POINT_KEYSTONE_5001    3    SG1, SG2, TP4                BLACK T/H TEST POINT 
+ TEST_POINT_PURPLE_KEYSTONE_5119 TEST_POINT_KEYSTONE_5119   10    TP3A, TP3B, TP3C, TP3D, TP3E PURPLE T/H TEST POINT 
+                                           TP3F, TP3G, TP3H, TP3I, TP3J

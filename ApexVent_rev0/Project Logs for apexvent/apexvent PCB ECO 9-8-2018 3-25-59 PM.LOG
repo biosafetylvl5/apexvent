@@ -1,0 +1,7 @@
+Added Component: Designator=*(20TSSOP65E)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=GND Pin=*-14
+Added Pin To Net: NetName=GND Pin=*-16
+Added Net: Name=GND
+Added Class: Name=apexvent
+Added Room: Name=apexvent
